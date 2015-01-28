@@ -32,7 +32,7 @@ namespace DSW.tables
         /// Check if the player matches any entry in system search list.
         /// </summary>
         /// <param name="name">Player name, can be blank.</param>
-        /// <param name="system">System name.</param>
+        /// <param name="location">Current location</param>
         /// <returns>Boolean: true if the player matches criteria.</returns>
         public bool Check(string name,string location)
         {

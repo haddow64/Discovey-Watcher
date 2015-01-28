@@ -12,7 +12,7 @@ namespace DSW.tables
     {
         private readonly string _uri;
         private List<List<string>> _list;
-        private string[] _basenames;
+        private object[] _basenames;
         private readonly BackgroundWorker _bw = new BackgroundWorker();
         public delegate void TickHandler(Base m, EventArgs e);
         public event TickHandler Refreshed;
