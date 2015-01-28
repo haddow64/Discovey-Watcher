@@ -41,7 +41,7 @@
             this.neoTabWindow1 = new NeoTabControlLibrary.NeoTabWindow();
             this.TabPagePlList = new NeoTabControlLibrary.NeoTabPage();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Grid = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToWatchPlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToWatchLocationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.neoTabWindow1)).BeginInit();
             this.neoTabWindow1.SuspendLayout();
             this.TabPagePlList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.TabPageLookup.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -122,7 +122,7 @@
             // 
             this.TabPagePlList.BackColor = System.Drawing.Color.Transparent;
             this.TabPagePlList.Controls.Add(this.button1);
-            this.TabPagePlList.Controls.Add(this.dataGridView1);
+            this.TabPagePlList.Controls.Add(this.Grid);
             this.TabPagePlList.Controls.Add(this.textBox1);
             this.TabPagePlList.Controls.Add(this.label1);
             this.TabPagePlList.IsCloseable = false;
@@ -146,12 +146,12 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.Grid.AllowUserToAddRows = false;
+            this.Grid.AllowUserToDeleteRows = false;
+            this.Grid.AllowUserToResizeRows = false;
+            this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -159,8 +159,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -168,25 +168,25 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.helpProvider1.SetHelpString(this.dataGridView1, "List of players currently online. Right click the player to show additional optio" +
+            this.Grid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Grid.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Grid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.Grid.EnableHeadersVisualStyles = false;
+            this.Grid.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.helpProvider1.SetHelpString(this.Grid, "List of players currently online. Right click the player to show additional optio" +
         "ns.");
-            this.dataGridView1.Location = new System.Drawing.Point(0, 73);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.helpProvider1.SetShowHelp(this.dataGridView1, true);
-            this.dataGridView1.Size = new System.Drawing.Size(676, 418);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
-            this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
+            this.Grid.Location = new System.Drawing.Point(0, 73);
+            this.Grid.MultiSelect = false;
+            this.Grid.Name = "Grid";
+            this.Grid.RowHeadersVisible = false;
+            this.Grid.RowTemplate.ContextMenuStrip = this.contextMenuStrip1;
+            this.Grid.RowTemplate.Height = 24;
+            this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.helpProvider1.SetShowHelp(this.Grid, true);
+            this.Grid.Size = new System.Drawing.Size(676, 418);
+            this.Grid.TabIndex = 0;
+            this.Grid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
+            this.Grid.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
             // 
             // contextMenuStrip1
             // 
@@ -702,7 +702,7 @@
             this.neoTabWindow1.ResumeLayout(false);
             this.TabPagePlList.ResumeLayout(false);
             this.TabPagePlList.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.TabPageLookup.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -726,7 +726,6 @@
 
         private NeoTabControlLibrary.NeoTabWindow neoTabWindow1;
         private NeoTabControlLibrary.NeoTabPage TabPagePlList;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private NeoTabControlLibrary.NeoTabPage TabPageLookup;

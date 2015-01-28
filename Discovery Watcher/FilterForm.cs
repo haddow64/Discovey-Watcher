@@ -73,26 +73,26 @@ namespace DSW
                     {
                         case "New":
                             {
-                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Properties.Settings.Default.NewBackColor;
-                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Properties.Settings.Default.NewForeColor;
+                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Settings.Default.NewBackColor;
+                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Settings.Default.NewForeColor;
                                 break;
                             }
                         case "Moved":
                             {
-                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Properties.Settings.Default.MovBackColor;
-                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Properties.Settings.Default.MovForeColor;
+                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Settings.Default.MovBackColor;
+                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Settings.Default.MovForeColor;
                                 break;
                             }
                         case "FoundPlayer":
                             {
-                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Properties.Settings.Default.PlTabBackColor;
-                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Properties.Settings.Default.PlTabForeColor;
+                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Settings.Default.PlTabBackColor;
+                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Settings.Default.PlTabForeColor;
                                 break;
                             }
                         case "FoundLocation":
                             {
-                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Properties.Settings.Default.LocBackColor;
-                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Properties.Settings.Default.LocForeColor;
+                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Settings.Default.LocBackColor;
+                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Settings.Default.LocForeColor;
                                 break;
                             }
                     }

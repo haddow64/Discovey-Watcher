@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using DSW;
+using DSW.popup;
 using DSW.Properties;
+using DSW.tables;
 using NeoTabControlLibrary;
 
 namespace DSW
@@ -27,16 +29,16 @@ namespace DSW
             neoTabWindow1.Renderer = AddInRendererManager.LoadRenderer("CCleanerRendererVS4");
 
             _bs.DataSource = Updater.Table;
-            dataGridView1.DataSource = _bs;
-            dataGridView1.Height = Convert.ToInt32(TabPagePlList.Height - textBox1.Height - 10);
-            dataGridView1.Columns[0].MinimumWidth = 175;
-            dataGridView1.Columns[1].MinimumWidth = 150;
-            dataGridView1.Columns[2].MinimumWidth = 125;
-            dataGridView1.Columns[3].MinimumWidth = 60;
-            dataGridView1.Columns[4].MinimumWidth = 30;
-            dataGridView1.Columns[5].MinimumWidth = 30;
-            dataGridView1.Columns[6].Visible = false;
-            dataGridView1.Focus();
+            Grid.DataSource = _bs;
+            Grid.Height = Convert.ToInt32(TabPagePlList.Height - textBox1.Height - 10);
+            Grid.Columns[0].MinimumWidth = 175;
+            Grid.Columns[1].MinimumWidth = 150;
+            Grid.Columns[2].MinimumWidth = 125;
+            Grid.Columns[3].MinimumWidth = 60;
+            Grid.Columns[4].MinimumWidth = 30;
+            Grid.Columns[5].MinimumWidth = 30;
+            Grid.Columns[6].Visible = false;
+            Grid.Focus();
             helpProvider1.SetHelpString(dataGridView3,"Enter full player name or part of the name (i.e. tag), and you'll receive notification when any player matching would log in. Clear the line to remove it. \r\n \r\n For example, string \"[Ange\" will trigger any [Angels], as well as Bla[Angedurdur \r\n \"D\" will trigger any player with a letter D (capital or not) in their name.");
             helpProvider1.SetHelpString(dataGridView2, "Works like Player Search, but you can specify the system name or its part to trigger, or you can enter only system name to trigger anyone entering this system. \r\n Clear system name field to remove the whole entry.");
             Updater.Tick();
@@ -52,9 +54,9 @@ namespace DSW
                 checkBox1_CheckedChanged(this,e);
             }
 
-            if (System.IO.File.Exists("base.log"))
+            if (File.Exists("base.log"))
             {
-                richTextBox2.Text = System.IO.File.ReadAllText("base.log");
+                richTextBox2.Text = File.ReadAllText("base.log");
             }
 
         }
@@ -63,9 +65,9 @@ namespace DSW
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
-            dataGridView1.Height = Convert.ToInt32(TabPagePlList.Height - textBox1.Height - 10);
+            Grid.Height = Convert.ToInt32(TabPagePlList.Height - textBox1.Height - 10);
             dataGridView4.Height = Convert.ToInt32(TabPagePlList.Height - textBox1.Height - 10);
-            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            foreach (DataGridViewColumn col in Grid.Columns)
             {
                 col.HeaderCell.Style.Padding = col.Width > 64 ? new Padding(16, 0, 0, 0) : new Padding(0, 0, 0, 0);
 
@@ -81,10 +83,7 @@ namespace DSW
 
         #endregion
 
-        public DataGridView Grid
-        {
-            get { return dataGridView1; }
-        }
+        public DataGridView Grid { get; private set; }
 
         #region "tbox filters"
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -103,32 +102,32 @@ namespace DSW
 
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            var formattedValue = dataGridView1.Rows[e.RowIndex].Cells[6].FormattedValue;
+            var formattedValue = Grid.Rows[e.RowIndex].Cells[6].FormattedValue;
             if (formattedValue != null)
                 switch ((string)formattedValue)
                 {
                     case "New":
                         {
-                            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Properties.Settings.Default.NewBackColor;
-                            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Properties.Settings.Default.NewForeColor;
+                            Grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Settings.Default.NewBackColor;
+                            Grid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Settings.Default.NewForeColor;
                             break;
                         }
                     case "Moved":
                         {
-                            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Properties.Settings.Default.MovBackColor;
-                            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Properties.Settings.Default.MovForeColor;
+                            Grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Settings.Default.MovBackColor;
+                            Grid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Settings.Default.MovForeColor;
                             break;
                         }
                     case "FoundPlayer":
                         {
-                            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Properties.Settings.Default.PlTabBackColor;
-                            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Properties.Settings.Default.PlTabForeColor;
+                            Grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Settings.Default.PlTabBackColor;
+                            Grid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Settings.Default.PlTabForeColor;
                             break;
                         }
                     case "FoundLocation":
                         {
-                            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Properties.Settings.Default.LocBackColor;
-                            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Properties.Settings.Default.LocForeColor;
+                            Grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Settings.Default.LocBackColor;
+                            Grid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Settings.Default.LocForeColor;
                             break;
                         }
                 }
@@ -151,13 +150,13 @@ namespace DSW
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            dataGridView1.ClearSelection();
+            Grid.ClearSelection();
             if (e.Button == MouseButtons.Right)
             {
                 int rowSelected = e.RowIndex;
                 if (e.RowIndex != -1)
                 {
-                    dataGridView1.Rows[rowSelected].Selected = true;
+                    Grid.Rows[rowSelected].Selected = true;
                 }
                 // you now have the selected row with the context menu showing for the user to delete etc.
             }
@@ -166,20 +165,20 @@ namespace DSW
         #region "toolstrip"
         private void addToWatchPlayersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var curRow = dataGridView1.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-            Updater.PlayerWatch.Table.Rows.Add((string) dataGridView1.Rows[curRow].Cells[0].FormattedValue);
+            var curRow = Grid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+            Updater.PlayerWatch.Table.Rows.Add((string) Grid.Rows[curRow].Cells[0].FormattedValue);
         }
 
         private void addToWatchLocationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Int32 curRow = dataGridView1.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-            Updater.LocationWatch.Table.Rows.Add((string)dataGridView1.Rows[curRow].Cells[0].FormattedValue, (string)dataGridView1.Rows[curRow].Cells[2].FormattedValue);
+            Int32 curRow = Grid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+            Updater.LocationWatch.Table.Rows.Add((string)Grid.Rows[curRow].Cells[0].FormattedValue, (string)Grid.Rows[curRow].Cells[2].FormattedValue);
         }
 
         private void tagLookupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Int32 curRow = dataGridView1.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-            textBox2.Text = (string) dataGridView1.Rows[curRow].Cells[1].FormattedValue;
+            Int32 curRow = Grid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+            textBox2.Text = (string) Grid.Rows[curRow].Cells[1].FormattedValue;
             neoTabWindow1.SelectedIndex = 2;
         }
         #endregion
@@ -248,7 +247,7 @@ namespace DSW
         void Online_Refreshed(PlayerList m, EventArgs e)
         {
             _bs.DataSource = m.Table;
-            dataGridView1.Refresh();
+            Grid.Refresh();
         }
 
         #region "notifyicon tstrip"
@@ -327,7 +326,7 @@ namespace DSW
             textBox5.Text = status[3];
         }
 
-        private void Base_Refreshed(tables.Base m, EventArgs e)
+        private void Base_Refreshed(Base m, EventArgs e)
         {
             comboBox1.Items.AddRange(m.GetNames);
             comboBox1.Enabled = true;
@@ -340,7 +339,7 @@ namespace DSW
                 {
                     if (Settings.Default.UseNotif)
                     {
-                        popup.Notifier.Pop(string.Format("{0} \r\n State changed! H:{1} S:{2}",comboBox1.Text,status[1],status[2]));
+                        Notifier.Pop(string.Format("{0} \r\n State changed! H:{1} S:{2}",comboBox1.Text,status[1],status[2]));
                     }
                     BaseWriteDownAttackers(status[1], status[2]);
                 }
@@ -388,7 +387,7 @@ namespace DSW
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
-            System.IO.File.WriteAllText("base.log", richTextBox2.Text);
+            File.WriteAllText("base.log", richTextBox2.Text);
         }
 
         public void ClearBaseLog()

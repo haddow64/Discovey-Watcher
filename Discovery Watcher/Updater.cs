@@ -1,5 +1,6 @@
 ﻿using System;
-using DSW.tables;
+using System.Timers;
+using DSW.Properties;
 using DSW.tables;
 
 namespace DSW
@@ -11,13 +12,13 @@ namespace DSW
         private static readonly PlayerLookup LookupPl = new PlayerLookup();
         private static readonly LocationLookup LookupLo = new LocationLookup();
         private static Base _base;
-        private static readonly System.Timers.Timer Timer = new System.Timers.Timer();
+        private static readonly Timer Timer = new Timer();
         static Updater()
         {
             Pll = new PlayerList("http://discoverygc.com/forums/serverinterface.php?action=players_online");
 
             Timer.Elapsed += _timer_Tick;
-            Timer.Interval = Properties.Settings.Default.RefInterval;
+            Timer.Interval = Settings.Default.RefInterval;
             Timer.Enabled = true;
             Timer.Start();
         }
@@ -30,7 +31,7 @@ namespace DSW
         public static void SetInterval()
         {
             Timer.Stop();
-            Timer.Interval = Properties.Settings.Default.RefInterval;
+            Timer.Interval = Settings.Default.RefInterval;
             Timer.Start();
         }
 

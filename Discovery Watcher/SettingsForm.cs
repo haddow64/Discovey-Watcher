@@ -17,7 +17,7 @@ namespace DSW
         {
             Icon = Resources.CivBomb;
             neoTabWindow1.Renderer = AddInRendererManager.LoadRenderer("AvastRenderer");
-            numericUpDown1.Value = (decimal)((double)Properties.Settings.Default.RefInterval / 60000);
+            numericUpDown1.Value = (decimal)((double)Settings.Default.RefInterval / 60000);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -57,16 +57,14 @@ namespace DSW
         //change refresh interval
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.RefInterval = (int)(numericUpDown1.Value*60000);
+            Settings.Default.RefInterval = (int)(numericUpDown1.Value*60000);
             Updater.SetInterval();
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            var _mf = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-            _mf.ClearBaseLog();
+            var mf = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+            if (mf != null) mf.ClearBaseLog();
         }
-
-
     }
 }
