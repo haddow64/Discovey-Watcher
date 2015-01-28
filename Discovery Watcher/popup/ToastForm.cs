@@ -77,8 +77,5 @@ namespace DSW.popup
                 Close();
             }
         }
-
-
-
     }
 }

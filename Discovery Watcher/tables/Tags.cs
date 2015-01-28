@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace DSW.tables
@@ -31,12 +32,9 @@ namespace DSW.tables
 
         public string GetTag(string tag)
         {
-            foreach (DataRow row in _table.Rows)
+            foreach (DataRow row in _table.Rows.Cast<DataRow>().Where(row => tag.IndexOf((string)row[0], StringComparison.Ordinal) != -1))
             {
-                if (tag.IndexOf((string)row[0], StringComparison.Ordinal) != -1)
-                {
-                    return (string)row[1];
-                }
+                return (string)row[1];
             }
             return "---";
         }
@@ -45,6 +43,5 @@ namespace DSW.tables
         {
             get { return _table; }
         }
-
     }
 }

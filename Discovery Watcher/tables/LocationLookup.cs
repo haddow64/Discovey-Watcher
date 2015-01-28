@@ -46,16 +46,15 @@ namespace DSW.tables
                         {
                         return true;
                         }
-                    } else
+                    } 
+                    else
                     {
                         if ((StringUtils.TrimDown(name).IndexOf(StringUtils.TrimDown((string)row[0]), StringComparison.Ordinal) != -1) & (StringUtils.TrimDown(location).IndexOf(StringUtils.TrimDown((string)row[1]), StringComparison.Ordinal) != -1) & (row[1].ToString().Trim() != ""))
                         {
                         return true;
                         }
                     }
-                    
                 }
-            
             return false;
         }
 

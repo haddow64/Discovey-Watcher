@@ -61,8 +61,6 @@ namespace DSW
 
         }
 
-
-
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             Grid.Height = Convert.ToInt32(TabPagePlList.Height - textBox1.Height - 10);
@@ -70,10 +68,8 @@ namespace DSW
             foreach (DataGridViewColumn col in Grid.Columns)
             {
                 col.HeaderCell.Style.Padding = col.Width > 64 ? new Padding(16, 0, 0, 0) : new Padding(0, 0, 0, 0);
-
             }
         }
-
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -83,7 +79,7 @@ namespace DSW
 
         #endregion
 
-        public DataGridView Grid { get; private set; }
+        private DataGridView Grid { get; set; }
 
         #region "tbox filters"
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -97,8 +93,6 @@ namespace DSW
             ((DataTable)dataGridView4.DataSource).DefaultView.RowFilter = string.Format("Tag like '%{0}%' OR Faction like '%{0}%' OR IFF  like '%{0}%' OR ID like '%{0}%' OR Leader like '%{0}%'", StringUtils.EscapeLikeValue(textBox2.Text.Trim().Replace("'", "''")));
         }
         #endregion
-
-
 
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
@@ -299,8 +293,6 @@ namespace DSW
 
         #endregion
 
-
-
         #region "basewatch refresh"
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -346,15 +338,13 @@ namespace DSW
 
                 if (textBox5.Text != status[3])
                 {
-                    BaseLogEvent(string.Format("Cash changed: previous amount: {0} current: {1}", textBox5.Text,
-                                                       status[3]));
+                    BaseLogEvent(string.Format("Cash changed: previous amount: {0} current: {1}", textBox5.Text, status[3]));
                 }
             }
 
             textBox3.Text = status[1];
             textBox4.Text = status[2];
             textBox5.Text = status[3];
-
         }
 
         private int GetBaseIndex()
@@ -370,14 +360,13 @@ namespace DSW
             }
 
             return ind;
-
         }
 
         
         private void BaseWriteDownAttackers(string health,string shield)
         {
             BaseLogEvent(string.Format("Health parameters changed! {0},{1} Possible attackers: ",health,shield));
-            BaseLogEvent(Updater.Online.GetSystem(textBox6.Text));
+            BaseLogEvent(Updater.Online.GetSystem());
         }
 
         private void BaseLogEvent(string text)
@@ -395,6 +384,7 @@ namespace DSW
             richTextBox2.Text = "";
             BaseLogEvent("Log cleared");
         }
+
         #endregion
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -412,22 +402,11 @@ namespace DSW
         {
             if (e.ColumnIndex == 0)
             {
-                //if (!dataGridView4.Rows[e.RowIndex].IsNewRow)
-                //{
-                    if ((string) dataGridView4.Rows[e.RowIndex].Cells[0].FormattedValue == "")
-                    {
-                        dataGridView4.Rows.RemoveAt(e.RowIndex);
-                    }
-                    
-                //}
+                if ((string) dataGridView4.Rows[e.RowIndex].Cells[0].FormattedValue == "")
+                {
+                    dataGridView4.Rows.RemoveAt(e.RowIndex);
+                }
             }
         }
-
-
-
-        
-
-
-
     }
 }

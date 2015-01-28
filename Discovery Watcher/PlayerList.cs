@@ -27,7 +27,6 @@ namespace DSW
 
         void _bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
             if (e.Cancelled)
             {
                 Notifier.Pop("Can't reach the player list!");
@@ -44,7 +43,6 @@ namespace DSW
 
         void _bw_DoWork(object sender, DoWorkEventArgs e)
         {
-
             var web = new HtmlWeb();
             HtmlDocument doc;
             //HAP
@@ -57,7 +55,6 @@ namespace DSW
                 e.Cancel = true;
                 return;
             }
-            
 
             if ((web.StatusCode != HttpStatusCode.OK) | (doc.DocumentNode.InnerHtml.Contains("List unavailable")) | (doc.DocumentNode.InnerHtml.Contains("The maximum server load limit has been reached")))
             {
@@ -91,10 +88,7 @@ namespace DSW
                 // ReSharper disable CoVariantArrayConversion
                 temptable.Rows.Add(lrow.ToArray());
                 // ReSharper restore CoVariantArrayConversion
-
-
             }
-
             e.Result = temptable;
             //GetList ends
         }
@@ -111,11 +105,8 @@ namespace DSW
                 {
                     _bw.RunWorkerAsync();
                 }
-                
             }
-            
         }
-
 
         private void RescanPlayers()
         {
@@ -129,7 +120,8 @@ namespace DSW
                         row[6] = "FoundPlayer";
                         doNotif = true;
                     }
-                } else
+                }
+                else
                 {
                     if ((string) row[6] == "FoundPlayer")
                     {
@@ -157,7 +149,6 @@ namespace DSW
                 {
                     Notifier.Pop(string.Format("Found {0} in {1}", row[0], row[2]));
                 }
-
             }
         }
 
@@ -182,7 +173,7 @@ namespace DSW
             return lrow[6];
         }
 
-        private string ScanRow(List<string> lrow)
+        private static string ScanRow(IList<string> lrow)
         {
             bool doNotif = false;
             if (lrow[6] == "New")
@@ -191,7 +182,6 @@ namespace DSW
                 {
                     lrow[6] = "FoundPlayer";
                     doNotif = true;
-                    
                 }
 
                 if (Updater.CheckLoc(lrow[0], lrow[2]))
@@ -199,7 +189,6 @@ namespace DSW
                     lrow[6] = "FoundLocation";
                     doNotif = true;
                 }
-
             }
 
             if (lrow[6] == "Moved")
@@ -219,22 +208,15 @@ namespace DSW
             return lrow[6];
         } 
 
-
         public DataSet.PlayersDataTable Table
         {
             get { return _table; }
         }
 
-        public string GetSystem(string sys)
+        public string GetSystem()
         {
             var rows = _table.Select("System like '%{0}%'");
-            if (!rows.Any())
-            {
-                return "nobody";
-            }
-
-            return rows.Aggregate("", (current, row) => current + string.Format("{0}, ", row[0]));
+            return !rows.Any() ? "nobody" : rows.Aggregate("", (current, row) => current + string.Format("{0}, ", row[0]));
         }
-
     }
 }

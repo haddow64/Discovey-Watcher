@@ -33,6 +33,5 @@ namespace DSW
         {
             return str.Trim().ToLower();
         }
-
     }
 }

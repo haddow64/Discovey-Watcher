@@ -50,9 +50,6 @@ namespace DSW
             
         }
 
-
-
-
         public static DataSet.PlayersDataTable Table
         {
             get { return Pll.Table; }
@@ -87,20 +84,12 @@ namespace DSW
 
         public static Base Base
         {
-            get
-            {
-                if (_base == null)
-                {
-                    _base = new Base("http://discoverygc.com/forums/serverinterface.php?action=base_status");
-                }
-                return _base;
-            }
+            get { return _base ?? (_base = new Base("http://discoverygc.com/forums/serverinterface.php?action=base_status")); }
         }
 
         public static PlayerList Online
         {
             get { return Pll; }
         }
-
     }
 }

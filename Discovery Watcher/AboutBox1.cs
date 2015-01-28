@@ -16,7 +16,6 @@ namespace DSW
             labelProductName.Text = AssemblyProduct;
             labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
             labelCopyright.Text = AssemblyCopyright;
-            //this.textBoxDescription.Text = AssemblyDescription;
         }
 
         public override sealed string Text
@@ -27,7 +26,7 @@ namespace DSW
 
         #region Assembly Attribute Accessors
 
-        private string AssemblyTitle
+        private static string AssemblyTitle
         {
             get
             {
@@ -44,7 +43,7 @@ namespace DSW
             }
         }
 
-        private string AssemblyVersion
+        private static string AssemblyVersion
         {
             get
             {
@@ -57,24 +56,16 @@ namespace DSW
             get
             {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyProductAttribute)attributes[0]).Product;
+                return attributes.Length == 0 ? "" : ((AssemblyProductAttribute)attributes[0]).Product;
             }
         }
 
-        private string AssemblyCopyright
+        private static string AssemblyCopyright
         {
             get
             {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+                return attributes.Length == 0 ? "" : ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
             }
         }
 

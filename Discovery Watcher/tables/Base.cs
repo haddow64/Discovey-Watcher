@@ -65,7 +65,7 @@ namespace DSW.tables
             .Where(tr => tr.Elements("td").Count() > 1)
             .Select(tr => tr.Elements("td").Select(td => td.InnerHtml.Trim()).ToList())
             .ToList();
-            _basenames = new string[_list.Count];
+            _basenames = new object[_list.Count];
             foreach (var item in _list)
             {
                 _basenames[Array.IndexOf(_basenames, null)] = item[0].Substring(19, item[0].IndexOf("&nbsp;&nbsp;", StringComparison.Ordinal)-19);
@@ -73,7 +73,6 @@ namespace DSW.tables
 
             e.Result = new object[] {_list, _basenames};
         }
-
 
         /// <summary>
         /// Refreshes info if the worker is available.
@@ -86,16 +85,9 @@ namespace DSW.tables
             }
         }
 
-
         public string[] GetStatus(int index)
         {
-            if (index < _list.Count)
-            {
-                return _list[index].ToArray();
-            }
-
-            return new[] { "Unknown", "Base not found!"};
-
+            return index < _list.Count ? _list[index].ToArray() : new[] { "Unknown", "Base not found!"};
         }
 
         public object[] GetNames
@@ -109,6 +101,5 @@ namespace DSW.tables
                 return _basenames;
             }
         } 
-
     }
 }

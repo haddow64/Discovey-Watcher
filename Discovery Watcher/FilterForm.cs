@@ -29,7 +29,6 @@ namespace DSW
             dataGridView1.Columns[1].Visible = false;
 
             Updater.Online.Refreshed += Online_Refreshed;
-
         }
 
         void Online_Refreshed(PlayerList m, EventArgs e)
@@ -121,6 +120,5 @@ namespace DSW
         {
             Icon = Resources.CivBomb;
         }
-
     }
 }

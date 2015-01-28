@@ -65,12 +65,9 @@ namespace DSW.popup
                 if (Settings.Default.UseSound)
                 {
                     SystemSounds.Exclamation.Play();
-                }
-                
-            } 
-
+                } 
+            }
         }
-
 
         /// <summary>
         /// Creates and sends a new notification window.
@@ -88,12 +85,11 @@ namespace DSW.popup
             {
                 return;
             }
-                _mf.Invoke(new MethodInvoker(delegate
-                    {
-                        var tf = new ToastForm(text);
+                _mf.Invoke(new MethodInvoker(delegate 
+                    { 
+                    var tf = new ToastForm(text);
                         Stack.Enqueue(tf);
                     }));
-            
         }
 
 
@@ -105,8 +101,6 @@ namespace DSW.popup
                 ind = Array.IndexOf(Viewport, null);
 
             }));
-
-
             return new object[] { Screen.PrimaryScreen.WorkingArea.Bottom - height * (ind + 1) - 5 * (ind + 1), ind };
         }
 
@@ -119,8 +113,7 @@ namespace DSW.popup
                 _mf.Invoke(new MethodInvoker(delegate
                     {
                         Viewport[num] = null;
-                    }));
-            
+                    }));  
         }
     }
 }
