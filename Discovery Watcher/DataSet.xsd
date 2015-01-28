@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet" targetNamespace="http://tempuri.org/DataSet.xsd" xmlns:mstns="http://tempuri.org/DataSet.xsd" xmlns="http://tempuri.org/DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet" msprop:Generator_UserDSName="DataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Players" msdata:Locale="en" msprop:Generator_TableClassName="PlayersDataTable" msprop:Generator_TableVarName="tablePlayers" msprop:Generator_RowChangedName="PlayersRowChanged" msprop:Generator_TablePropName="Players" msprop:Generator_RowDeletingName="PlayersRowDeleting" msprop:Generator_RowChangingName="PlayersRowChanging" msprop:Generator_RowEvHandlerName="PlayersRowChangeEventHandler" msprop:Generator_RowDeletedName="PlayersRowDeleted" msprop:Generator_RowClassName="PlayersRow" msprop:Generator_UserTableName="Players" msprop:Generator_RowEvArgName="PlayersRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" />
+              <xs:element name="Faction" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Faction" msprop:Generator_ColumnVarNameInTable="columnFaction" msprop:Generator_ColumnPropNameInTable="FactionColumn" msprop:Generator_UserColumnName="Faction" type="xs:string" minOccurs="0" />
+              <xs:element name="System" msprop:Generator_ColumnVarNameInTable="columnSystem" msprop:Generator_ColumnPropNameInRow="System" msprop:Generator_ColumnPropNameInTable="SystemColumn" msprop:Generator_UserColumnName="System" type="xs:string" minOccurs="0" />
+              <xs:element name="Ping" msprop:Generator_ColumnVarNameInTable="columnPing" msprop:Generator_ColumnPropNameInRow="Ping" msprop:Generator_ColumnPropNameInTable="PingColumn" msprop:Generator_UserColumnName="Ping" type="xs:int" minOccurs="0" />
+              <xs:element name="Lag" msprop:Generator_ColumnVarNameInTable="columnLag" msprop:Generator_ColumnPropNameInRow="Lag" msprop:Generator_ColumnPropNameInTable="LagColumn" msprop:Generator_UserColumnName="Lag" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Loss" msprop:Generator_ColumnVarNameInTable="columnLoss" msprop:Generator_ColumnPropNameInRow="Loss" msprop:Generator_ColumnPropNameInTable="LossColumn" msprop:Generator_UserColumnName="Loss" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="State" msprop:Generator_ColumnVarNameInTable="columnState" msprop:Generator_ColumnPropNameInRow="State" msprop:Generator_ColumnPropNameInTable="StateColumn" msprop:Generator_UserColumnName="State" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PlayerLookup" msdata:Locale="en" msprop:Generator_TableClassName="PlayerLookupDataTable" msprop:Generator_TableVarName="tablePlayerLookup" msprop:Generator_TablePropName="PlayerLookup" msprop:Generator_RowDeletingName="PlayerLookupRowDeleting" msprop:Generator_RowChangingName="PlayerLookupRowChanging" msprop:Generator_RowEvHandlerName="PlayerLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="PlayerLookupRowDeleted" msprop:Generator_UserTableName="PlayerLookup" msprop:Generator_RowChangedName="PlayerLookupRowChanged" msprop:Generator_RowEvArgName="PlayerLookupRowChangeEvent" msprop:Generator_RowClassName="PlayerLookupRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" default="" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TagTable" msdata:Locale="en" msprop:Generator_TableClassName="TagTableDataTable" msprop:Generator_TableVarName="tableTagTable" msprop:Generator_RowChangedName="TagTableRowChanged" msprop:Generator_TablePropName="TagTable" msprop:Generator_RowDeletingName="TagTableRowDeleting" msprop:Generator_RowChangingName="TagTableRowChanging" msprop:Generator_RowEvHandlerName="TagTableRowChangeEventHandler" msprop:Generator_RowDeletedName="TagTableRowDeleted" msprop:Generator_RowClassName="TagTableRow" msprop:Generator_UserTableName="TagTable" msprop:Generator_RowEvArgName="TagTableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Tag" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Tag" msprop:Generator_ColumnVarNameInTable="columnTag" msprop:Generator_ColumnPropNameInTable="TagColumn" msprop:Generator_UserColumnName="Tag" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="Faction" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Faction" msprop:Generator_ColumnVarNameInTable="columnFaction" msprop:Generator_ColumnPropNameInTable="FactionColumn" msprop:Generator_UserColumnName="Faction" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="IFF" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="IFF" msprop:Generator_ColumnVarNameInTable="columnIFF" msprop:Generator_ColumnPropNameInTable="IFFColumn" msprop:Generator_UserColumnName="IFF" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="ID" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="Leader" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Leader" msprop:Generator_ColumnVarNameInTable="columnLeader" msprop:Generator_ColumnPropNameInTable="LeaderColumn" msprop:Generator_UserColumnName="Leader" type="xs:string" default="" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LocationLookup" msdata:Locale="en" msprop:Generator_TableClassName="LocationLookupDataTable" msprop:Generator_TableVarName="tableLocationLookup" msprop:Generator_TablePropName="LocationLookup" msprop:Generator_RowDeletingName="LocationLookupRowDeleting" msprop:Generator_RowChangingName="LocationLookupRowChanging" msprop:Generator_RowEvHandlerName="LocationLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="LocationLookupRowDeleted" msprop:Generator_UserTableName="LocationLookup" msprop:Generator_RowChangedName="LocationLookupRowChanged" msprop:Generator_RowEvArgName="LocationLookupRowChangeEvent" msprop:Generator_RowClassName="LocationLookupRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="Location" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Location" msprop:Generator_ColumnVarNameInTable="columnLocation" msprop:Generator_ColumnPropNameInTable="LocationColumn" msprop:Generator_UserColumnName="Location" type="xs:string" default="" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="NameKey" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Players" />
+      <xs:field xpath="mstns:Name" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
