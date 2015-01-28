@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace DSW.tables
@@ -36,14 +37,7 @@ namespace DSW.tables
         /// <returns>Boolean: if player triggered any entry.</returns>
         public bool Check(string name)
         {
-            foreach (DataRow row in _table.Rows)
-            {
-                if ((StringUtils.TrimDown(name).IndexOf(StringUtils.TrimDown((string)row[0]), StringComparison.Ordinal) != -1) & (row[0].ToString().Trim() != ""))
-                {
-                    return true;
-                }
-            }
-            return false;
+            return _table.Rows.Cast<DataRow>().Any(row => (StringUtils.TrimDown(name).IndexOf(StringUtils.TrimDown((string) row[0]), StringComparison.Ordinal) != -1) & (row[0].ToString().Trim() != ""));
         }
 
         public DataSet.PlayerLookupDataTable Table

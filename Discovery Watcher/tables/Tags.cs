@@ -7,7 +7,7 @@ namespace DSW.tables
 {
     class Tags
     {
-        private readonly DSW.DataSet.TagTableDataTable _table = new DSW.DataSet.TagTableDataTable();
+        private readonly DataSet.TagTableDataTable _table = new DataSet.TagTableDataTable();
         public Tags()
         {
             if (File.Exists(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\tags.xml"))
@@ -41,7 +41,7 @@ namespace DSW.tables
             return "---";
         }
 
-        public DSW.DataSet.TagTableDataTable Table
+        public DataSet.TagTableDataTable Table
         {
             get { return _table; }
         }
