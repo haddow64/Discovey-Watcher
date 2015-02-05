@@ -14,7 +14,10 @@ namespace DSW
     public partial class Form1 : Form
     {
         private readonly BindingSource _bs = new BindingSource();
-        private readonly List<FilterForm> _filforms = new List<FilterForm>(); 
+        private readonly List<FilterForm> _filforms = new List<FilterForm>();
+
+        //private DataGridView Grid { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -78,8 +81,6 @@ namespace DSW
         }
 
         #endregion
-
-        private DataGridView Grid { get; set; }
 
         #region "tbox filters"
         private void textBox1_TextChanged(object sender, EventArgs e)
