@@ -1,12 +1,9 @@
 ﻿namespace DSW
 {
-    public partial class DataSet 
+    public partial class DataSet
     {
-    }
-}
-namespace DSW 
-{
-    public partial class DataSet 
-    {
+        partial class PlayersDataTable
+        {
+        }
     }
 }

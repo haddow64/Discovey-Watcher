@@ -30,13 +30,10 @@ namespace DSW.tables
                 Notifier.Pop("Can't reach the base list!");
                 return;
             }
-            var data = (object[]) e.Result;
+            var data = (object[])e.Result;
             _list = (List<List<string>>)data[0];
-            _basenames = (string[]) data[1];
-            if (Refreshed != null)
-            {
-                Refreshed(this, e);
-            }
+            _basenames = (string[])data[1];
+            Refreshed?.Invoke(this, e);
         }
 
         void Bw_DoWork(object sender, DoWorkEventArgs e)
@@ -68,10 +65,10 @@ namespace DSW.tables
             _basenames = new object[_list.Count];
             foreach (var item in _list)
             {
-                _basenames[Array.IndexOf(_basenames, null)] = item[0].Substring(19, item[0].IndexOf("&nbsp;&nbsp;", StringComparison.Ordinal)-19);
+                _basenames[Array.IndexOf(_basenames, null)] = item[0].Substring(19, item[0].IndexOf("&nbsp;&nbsp;", StringComparison.Ordinal) - 19);
             }
 
-            e.Result = new object[] {_list, _basenames};
+            e.Result = new object[] { _list, _basenames };
         }
 
         /// <summary>
@@ -87,7 +84,7 @@ namespace DSW.tables
 
         public string[] GetStatus(int index)
         {
-            return index < _list.Count ? _list[index].ToArray() : new[] { "Unknown", "Base not found!"};
+            return index < _list.Count ? _list[index].ToArray() : new[] { "Unknown", "Base not found!" };
         }
 
         public object[] GetNames
@@ -100,6 +97,6 @@ namespace DSW.tables
                 }
                 return _basenames;
             }
-        } 
+        }
     }
 }

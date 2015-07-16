@@ -28,13 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addToWatchPlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToWatchLocationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tagLookupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkBox1
@@ -42,7 +48,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(53, 12);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(82, 17);
+            this.checkBox1.Size = new System.Drawing.Size(85, 17);
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "Show P\\L\\L";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -55,7 +61,7 @@
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Location = new System.Drawing.Point(141, 12);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(79, 17);
+            this.checkBox2.Size = new System.Drawing.Size(76, 17);
             this.checkBox2.TabIndex = 1;
             this.checkBox2.Text = "Use colors";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -77,6 +83,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -104,11 +111,38 @@
             this.checkBox3.AutoSize = true;
             this.checkBox3.Location = new System.Drawing.Point(53, 36);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(127, 17);
+            this.checkBox3.Size = new System.Drawing.Size(120, 17);
             this.checkBox3.TabIndex = 3;
             this.checkBox3.Text = "Show Faction name";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToWatchPlayersToolStripMenuItem,
+            this.addToWatchLocationsToolStripMenuItem,
+            this.tagLookupToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(205, 92);
+            // 
+            // addToWatchPlayersToolStripMenuItem
+            // 
+            this.addToWatchPlayersToolStripMenuItem.Name = "addToWatchPlayersToolStripMenuItem";
+            this.addToWatchPlayersToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.addToWatchPlayersToolStripMenuItem.Text = "Add to Watch: Players";
+            // 
+            // addToWatchLocationsToolStripMenuItem
+            // 
+            this.addToWatchLocationsToolStripMenuItem.Name = "addToWatchLocationsToolStripMenuItem";
+            this.addToWatchLocationsToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.addToWatchLocationsToolStripMenuItem.Text = "Add to Watch: Locations";
+            // 
+            // tagLookupToolStripMenuItem
+            // 
+            this.tagLookupToolStripMenuItem.Name = "tagLookupToolStripMenuItem";
+            this.tagLookupToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.tagLookupToolStripMenuItem.Text = "Tag Lookup";
             // 
             // FilterForm
             // 
@@ -122,6 +156,7 @@
             this.Load += new System.EventHandler(this.FilterForm_Load);
             this.SizeChanged += new System.EventHandler(this.FilterForm_SizeChanged_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,5 +168,9 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem addToWatchPlayersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToWatchLocationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tagLookupToolStripMenuItem;
     }
 }

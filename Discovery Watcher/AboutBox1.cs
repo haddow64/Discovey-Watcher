@@ -24,16 +24,22 @@ namespace DSW
             set { base.Text = value; }
         }
 
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         #region Assembly Attribute Accessors
 
         private static string AssemblyTitle
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                var attributes = Assembly.GetExecutingAssembly()
+                    .GetCustomAttributes(typeof (AssemblyTitleAttribute), false);
                 if (attributes.Length > 0)
                 {
-                    var titleAttribute = (AssemblyTitleAttribute)attributes[0];
+                    var titleAttribute = (AssemblyTitleAttribute) attributes[0];
                     if (titleAttribute.Title != "")
                     {
                         return titleAttribute.Title;
@@ -43,20 +49,15 @@ namespace DSW
             }
         }
 
-        private static string AssemblyVersion
-        {
-            get
-            {
-                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }
-        }
+        private static string AssemblyVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-        private string AssemblyProduct
+        private static string AssemblyProduct
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
-                return attributes.Length == 0 ? "" : ((AssemblyProductAttribute)attributes[0]).Product;
+                var attributes = Assembly.GetExecutingAssembly()
+                    .GetCustomAttributes(typeof (AssemblyProductAttribute), false);
+                return attributes.Length == 0 ? "" : ((AssemblyProductAttribute) attributes[0]).Product;
             }
         }
 
@@ -64,16 +65,12 @@ namespace DSW
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-                return attributes.Length == 0 ? "" : ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+                var attributes = Assembly.GetExecutingAssembly()
+                    .GetCustomAttributes(typeof (AssemblyCopyrightAttribute), false);
+                return attributes.Length == 0 ? "" : ((AssemblyCopyrightAttribute) attributes[0]).Copyright;
             }
         }
 
         #endregion
-
-        private void okButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }

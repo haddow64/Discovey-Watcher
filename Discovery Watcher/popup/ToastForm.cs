@@ -7,11 +7,14 @@ namespace DSW.popup
     public partial class ToastForm : Form
     {
         private int _vpnum = -1;
+
         public ToastForm(string text)
         {
             InitializeComponent();
             label1.Text = text;
         }
+
+        public Timer Timer { get; private set; }
 
         public void Setvp(int num)
         {
@@ -28,27 +31,21 @@ namespace DSW.popup
                 mf.BringToFront();
                 mf.Activate();
             }
-            timer1.Enabled = false;
+            Timer.Enabled = false;
             timerFOut.Enabled = true;
         }
 
         private void ToastForm_Shown(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
+            Timer.Enabled = true;
             timerFade.Enabled = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Enabled = false;
+            Timer.Enabled = false;
             Notifier.Remove(_vpnum);
             timerFOut.Enabled = true;
-            
-        }
-
-        public Timer Timer
-        {
-            get { return timer1; }
         }
 
         private void timerFade_Tick(object sender, EventArgs e)
@@ -73,7 +70,7 @@ namespace DSW.popup
             {
                 Opacity = 0;
                 timerFade.Enabled = false;
-                
+
                 Close();
             }
         }

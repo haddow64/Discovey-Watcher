@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Timer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.timerFade = new System.Windows.Forms.Timer(this.components);
             this.timerFOut = new System.Windows.Forms.Timer(this.components);
@@ -68,8 +68,8 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 5000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.Timer.Interval = 5000;
+            this.Timer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panel1
             // 
@@ -120,7 +120,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer timerFade;
         private System.Windows.Forms.Timer timerFOut;

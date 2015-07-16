@@ -16,8 +16,6 @@ namespace DSW
         private readonly BindingSource _bs = new BindingSource();
         private readonly List<FilterForm> _filforms = new List<FilterForm>();
 
-        //private DataGridView Grid { get; set; }
-
         public Form1()
         {
             InitializeComponent();
@@ -128,8 +126,6 @@ namespace DSW
                 }
         }
 
-
-
         #region "mainmenu"
         private void manualUpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -148,7 +144,7 @@ namespace DSW
             Grid.ClearSelection();
             if (e.Button == MouseButtons.Right)
             {
-                int rowSelected = e.RowIndex;
+                var rowSelected = e.RowIndex;
                 if (e.RowIndex != -1)
                 {
                     Grid.Rows[rowSelected].Selected = true;
@@ -160,19 +156,35 @@ namespace DSW
         #region "toolstrip"
         private void addToWatchPlayersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var curRow = Grid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-            Updater.PlayerWatch.Table.Rows.Add((string) Grid.Rows[curRow].Cells[0].FormattedValue);
+            // ReSharper disable AssignNullToNotNullAttribute
+            if (dataGridView1.Columns.Count == 0)
+            {
+                foreach (DataGridViewColumn dgvc in Grid.Columns)
+                {
+                    dataGridView1.Columns.Add(dgvc.Clone() as DataGridViewColumn);
+                }
+            }
+
+            foreach (DataGridViewRow r in Grid.SelectedRows)
+            {
+                var index = dataGridView1.Rows.Add(r.Clone() as DataGridViewRow);
+                foreach (DataGridViewCell o in r.Cells)
+                {
+                    dataGridView1.Rows[index].Cells[o.ColumnIndex].Value = o.Value;
+                }
+            }
+            // ReSharper restore AssignNullToNotNullAttribute
         }
 
         private void addToWatchLocationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Int32 curRow = Grid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-            Updater.LocationWatch.Table.Rows.Add((string)Grid.Rows[curRow].Cells[0].FormattedValue, (string)Grid.Rows[curRow].Cells[2].FormattedValue);
+            //var curRow = Grid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+            //Updater.LocationWatch.Table.Rows.Add(Grid.Rows[curRow].Cells[0].FormattedValue, Grid.Rows[curRow].Cells[2].FormattedValue);
         }
 
         private void tagLookupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Int32 curRow = Grid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+            var curRow = Grid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
             textBox2.Text = (string) Grid.Rows[curRow].Cells[1].FormattedValue;
             neoTabWindow1.SelectedIndex = 2;
         }
@@ -300,8 +312,8 @@ namespace DSW
         {
             if (checkBox1.Checked)
             {
-                Updater.Base.Refreshed += Base_Refreshed;
-                Updater.Base.Tick();
+                //Updater.Base.Refreshed += Base_Refreshed;
+                //Updater.Base.Tick();
                 comboBox1.Text = Resources.BaseWatchUpdating;
             }
         }
@@ -309,44 +321,44 @@ namespace DSW
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Settings.Default.BaseName = comboBox1.Text;
-            string[] status = Updater.Base.GetStatus(comboBox1.SelectedIndex);
-            richTextBox1.Text = Regex.Replace(status[0].Replace("&nbsp;&nbsp;", "").Replace("<p>", "\r\n\r\n"), @"<[^>]*>", String.Empty);
-            BaseLogEvent("-------------");
-            BaseLogEvent(string.Format("Base changed: {0}", comboBox1.Text));
-            BaseLogEvent("-------------");
-            textBox3.Text = status[1];
-            textBox4.Text = status[2];
-            textBox5.Text = status[3];
+            //var status = Updater.Base.GetStatus(comboBox1.SelectedIndex);
+            //richTextBox1.Text = Regex.Replace(status[0].Replace("&nbsp;&nbsp;", "").Replace("<p>", "\r\n\r\n"), @"<[^>]*>", string.Empty);
+            //BaseLogEvent("-------------");
+            //BaseLogEvent(string.Format("Base changed: {0}", comboBox1.Text));
+            //BaseLogEvent("-------------");
+            //textBox3.Text = status[1];
+            //textBox4.Text = status[2];
+            //textBox5.Text = status[3];
         }
 
-        private void Base_Refreshed(Base m, EventArgs e)
-        {
-            comboBox1.Items.AddRange(m.GetNames);
-            comboBox1.Enabled = true;
-            comboBox1.SelectedIndex = GetBaseIndex();
+        //private void Base_Refreshed(Base m, EventArgs e)
+        //{
+        //    comboBox1.Items.AddRange(m.GetNames);
+        //    comboBox1.Enabled = true;
+        //    comboBox1.SelectedIndex = GetBaseIndex();
 
-            string[] status = Updater.Base.GetStatus(comboBox1.SelectedIndex);
-            if (textBox3.Text != "")
-            {
-                if ((textBox3.Text != status[1]) | textBox4.Text != status[2])
-                {
-                    if (Settings.Default.UseNotif)
-                    {
-                        Notifier.Pop(string.Format("{0} \r\n State changed! H:{1} S:{2}",comboBox1.Text,status[1],status[2]));
-                    }
-                    BaseWriteDownAttackers(status[1], status[2]);
-                }
+        //    var status = Updater.Base.GetStatus(comboBox1.SelectedIndex);
+        //    if (textBox3.Text != "")
+        //    {
+        //        if ((textBox3.Text != status[1]) | textBox4.Text != status[2])
+        //        {
+        //            if (Settings.Default.UseNotif)
+        //            {
+        //                Notifier.Pop(string.Format("{0} \r\n State changed! H:{1} S:{2}",comboBox1.Text,status[1],status[2]));
+        //            }
+        //            BaseWriteDownAttackers(status[1], status[2]);
+        //        }
 
-                if (textBox5.Text != status[3])
-                {
-                    BaseLogEvent(string.Format("Cash changed: previous amount: {0} current: {1}", textBox5.Text, status[3]));
-                }
-            }
+        //        if (textBox5.Text != status[3])
+        //        {
+        //            BaseLogEvent(string.Format("Cash changed: previous amount: {0} current: {1}", textBox5.Text, status[3]));
+        //        }
+        //    }
 
-            textBox3.Text = status[1];
-            textBox4.Text = status[2];
-            textBox5.Text = status[3];
-        }
+        //    textBox3.Text = status[1];
+        //    textBox4.Text = status[2];
+        //    textBox5.Text = status[3];
+        //}
 
         private int GetBaseIndex()
         {
@@ -354,7 +366,7 @@ namespace DSW
             {
                 return 0; 
             }
-            int ind = comboBox1.Items.IndexOf(Settings.Default.BaseName);
+            var ind = comboBox1.Items.IndexOf(Settings.Default.BaseName);
             if (ind == -1)
             {
                 ind = 0;

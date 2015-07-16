@@ -39,7 +39,7 @@ namespace DSW.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DSW.Properties.Resources", typeof(Resources).Assembly);
+                    var temp = new global::System.Resources.ResourceManager("DSW.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -65,7 +65,7 @@ namespace DSW.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap bar {
             get {
-                object obj = ResourceManager.GetObject("bar", resourceCulture);
+                var obj = ResourceManager.GetObject("bar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -84,7 +84,7 @@ namespace DSW.Properties {
         /// </summary>
         internal static System.Drawing.Icon CivBomb {
             get {
-                object obj = ResourceManager.GetObject("CivBomb", resourceCulture);
+                var obj = ResourceManager.GetObject("CivBomb", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -94,7 +94,7 @@ namespace DSW.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap toastbmap_1 {
             get {
-                object obj = ResourceManager.GetObject("toastbmap_1", resourceCulture);
+                var obj = ResourceManager.GetObject("toastbmap_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

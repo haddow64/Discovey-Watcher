@@ -5,17 +5,14 @@ using DSW.tables;
 
 namespace DSW
 {
-    static class Updater
+    internal static class Updater
     {
-        static private readonly PlayerList Pll;
-        private static readonly Tags Tag = new Tags();
-        private static readonly PlayerLookup LookupPl = new PlayerLookup();
-        private static readonly LocationLookup LookupLo = new LocationLookup();
-        private static Base _base;
+        //private static Base _base;
         private static readonly Timer Timer = new Timer();
+
         static Updater()
         {
-            Pll = new PlayerList("http://discoverygc.com/forums/serverinterface.php?action=players_online");
+            Online = new PlayerList("http://discoverygc.com/forums/serverinterface.php?action=players_online");
 
             Timer.Elapsed += _timer_Tick;
             Timer.Interval = Settings.Default.RefInterval;
@@ -23,7 +20,17 @@ namespace DSW
             Timer.Start();
         }
 
-        static void _timer_Tick(object sender, EventArgs e)
+        public static DataSet.PlayersDataTable Table => Online.Table;
+        public static Tags Tags { get; } = new Tags();
+        public static PlayerLookup PlayerWatch { get; } = new PlayerLookup();
+        public static LocationLookup LocationWatch { get; } = new LocationLookup();
+
+        //public static Base Base
+        //    => _base ?? (_base = new Base("http://discoverygc.com/forums/serverinterface.php?action=base_status"));
+
+        public static PlayerList Online { get; }
+
+        private static void _timer_Tick(object sender, EventArgs e)
         {
             Tick();
         }
@@ -37,59 +44,23 @@ namespace DSW
 
         public static void Tick()
         {
-            Pll.Tick(false);
-            if (_base != null)
-            {
-                _base.Tick();
-            }
+            Online.Tick(false);
+            //_base?.Tick();
         }
 
         public static void RescanPlayers()
         {
-            Pll.Tick(true);
-            
-        }
-
-        public static DataSet.PlayersDataTable Table
-        {
-            get { return Pll.Table; }
-        }
-
-        public static Tags Tags
-        {
-            get { return Tag; }
-        }
-
-        public static PlayerLookup PlayerWatch
-        {
-            
-            get { return LookupPl; }
-        }
-
-        public static LocationLookup LocationWatch
-        {
-
-            get { return LookupLo; }
+            Online.Tick(true);
         }
 
         public static bool CheckPlayer(string name)
         {
-            return LookupPl.Check(name);
+            return PlayerWatch.Check(name);
         }
 
-        public static bool CheckLoc(string name,string location)
+        public static bool CheckLoc(string name, string location)
         {
-            return LookupLo.Check(name,location);
-        }
-
-        public static Base Base
-        {
-            get { return _base ?? (_base = new Base("http://discoverygc.com/forums/serverinterface.php?action=base_status")); }
-        }
-
-        public static PlayerList Online
-        {
-            get { return Pll; }
+            return LocationWatch.Check(name, location);
         }
     }
 }

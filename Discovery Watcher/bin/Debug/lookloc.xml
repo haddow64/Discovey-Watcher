@@ -1,2 +1,7 @@
 <?xml version="1.0" standalone="yes"?>
-<DocumentElement />
+<DocumentElement>
+  <LocationLookup>
+    <Name>Brian.Yent</Name>
+    <Location>New London</Location>
+  </LocationLookup>
+</DocumentElement>

@@ -8,7 +8,7 @@ namespace DSW
         public static string EscapeLikeValue(string value)
         {
             var sb = new StringBuilder(value.Length);
-            foreach (char c in value)
+            foreach (var c in value)
             {
                 switch (c)
                 {

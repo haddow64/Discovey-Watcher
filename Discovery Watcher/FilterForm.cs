@@ -8,7 +8,7 @@ namespace DSW
 {
     public partial class FilterForm : Form
     {
-        private readonly string _filter = "";
+        private readonly string _filter;
         private readonly BindingSource _bs = new BindingSource();
         private DataView _dw;
         public FilterForm(string filter)
@@ -113,7 +113,7 @@ namespace DSW
         private void FilterForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             var mf = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-            if (mf != null) mf.RemoveFilForm(this);
+            mf?.RemoveFilForm(this);
         }
 
         private void FilterForm_Load(object sender, EventArgs e)

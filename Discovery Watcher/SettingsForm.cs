@@ -64,7 +64,7 @@ namespace DSW
         private void button9_Click(object sender, EventArgs e)
         {
             var mf = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-            if (mf != null) mf.ClearBaseLog();
+            mf?.ClearBaseLog();
         }
     }
 }
